@@ -15,4 +15,11 @@ tasks:{name: string}[]=[
 
   }
 
+  addTask(){
+    this.tasks.push({
+    name:this.task
+  });
+  this.task='';
+  }
+
 }
