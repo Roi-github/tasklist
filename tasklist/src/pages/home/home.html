@@ -3,27 +3,24 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{title}}</ion-title>
+    <ion-title>タスク一覧</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
 
-
-<form padding>
+<form padding (submit)="addTask()" #f="ngForm">
   <ion-list>
     <ion-item>
       <ion-label floating>タスク</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text"[(ngModel)]="task" name="task" required
+    minlength="3" maxlength="20"></ion-input>
       </ion-item>
     </ion-list>
 
-  <button type="submit" ion-button block>Toggle Menu</button>
+<button type="submit" ion-button block [disabled]="!f.form.valid" >追加</button>
   </form>
 
   <ion-list>
-    <ion-item *ngFor="let t of tasks">{{t.name}}</ion-item>
+    <ion-item *ngFor="let t of tasks"(top)="changeTask()">{{t.name}}</ion-item>
 
     </ion-list>
-
-</ion-content>
